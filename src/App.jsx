@@ -1,11 +1,12 @@
-// import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
-import Slider from './components/Slider';
 import Footer from './components/Footer';
-import { useState } from 'react';
-import CardItem from './components/cart/CardItem';
-
+import Home from "./components/Home";
+import Favorites from "./components/Favorites";
+import "./App.css"
+import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 
 function App() {
@@ -13,13 +14,35 @@ function App() {
     // State для хранения данных туров
     const [tyrs, setTyrs] = useState([])
 
+    useEffect(()=>{
+        async function axiosData(){
+            const tyrsData =
+                await axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs');
+            // console.log(tyrsData);
+            setTyrs(tyrsData.data);
+        }
+        axiosData();
+
+
+        // fetch('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((myJson) => {
+        //     return myJson.json();
+        // }).then((myJson) => {
+        //     // console.log(myJson);
+        //     setTyrs(myJson);
+        // })
+    },[]
+    )
+
   return (
     <div>
-      <Header></Header>
-      <Slider></Slider>
-      <CardItem item={tyrs}/>
-      <Footer></Footer>
-      
+        <Router>
+              <Header/>
+                <Routes>
+                        <Route path="/favorites" element={<Favorites />}></Route>
+                        <Route path="/" element={<Home item={tyrs}/>}></Route>
+                </Routes>
+              <Footer/>
+        </Router>
     </div>
   );
 }

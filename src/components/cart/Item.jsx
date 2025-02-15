@@ -1,6 +1,6 @@
 import React from 'react'
 
-const item = () => {
+const item = (props) => {
   return (
     <div className='container py-3'>
         <main>
@@ -11,10 +11,14 @@ const item = () => {
                             <button type='button' className='w-100 btn btn-lg btn-primary'>
                                 избранное
                             </button>
-                            <p>Заголовок</p>
-                            <img className='rounded' src='./img/first.jpg' width={'85%'} alt=''></img>
-                            <p>описание</p>
-                            <p>цена</p>
+                            {/*<p>Заголовок</p>*/}
+                            <p>{props.title}</p>
+                            {/*<img className='rounded' src='./img/first.jpg' width={'85%'} alt=''></img>*/}
+                            <img className='rounded' src={props.img} width={'85%'} alt=''></img>
+                            {/*<p>описание</p>*/}
+                            <p>{props.description}</p>
+                            {/*<p>цена</p>*/}
+                            <p>{props.price}</p>
                             <button type='button' className='w-100 btn btn-lg btn-primary'>
                                 Добавить в корзину
                             </button>
