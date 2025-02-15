@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Description from "./components/Description";
 import Basket from "./components/basket/Basket";
+import Form from "./components/Form";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                         <Route path="/" element={<Home item={tyrs}/>}></Route>
                         <Route path="/cart" element={<Basket />}></Route>
                         <Route path="/description" element={<Description />}></Route>
+                        <Route path="/form" element={<Form />}></Route>
                 </Routes>
               <Footer/>
         </Router>
