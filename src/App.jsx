@@ -7,6 +7,8 @@ import "./App.css"
 import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Description from "./components/Description";
+import Basket from "./components/basket/Basket";
 
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
                 <Routes>
                         <Route path="/favorites" element={<Favorites />}></Route>
                         <Route path="/" element={<Home item={tyrs}/>}></Route>
+                        <Route path="/cart" element={<Basket />}></Route>
+                        <Route path="/description" element={<Description />}></Route>
                 </Routes>
               <Footer/>
         </Router>
