@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from "./components/Home";
-import Favorites from "./components/Favorites";
+import Favorites from "./components/favorites/Favorites";
 import "./App.css"
 import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import {useEffect, useState} from "react";
@@ -23,7 +23,7 @@ function App() {
     const [favorites, setFavorites] = useState([])
 
     //для корзины
-    const [overlayItems, setOverlayItem] = useState([])
+    const [overlayItems, setOverlayItems] = useState([])
 
 
     useEffect(()=>{
@@ -34,24 +34,19 @@ function App() {
                 await axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites');
             const cartData =
                 await axios.get('https://67b5c3a107ba6e59083e5dc0.mockapi.io/cart');
+
             // console.log(tyrsData);
             setTyrs(tyrsData.data);
             setFavorites(favoritesData.data);
-            setOverlayItem(cartData.data);
+            setOverlayItems(cartData.data);
         }
         axiosData();
 
-        // fetch('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((myJson) => {
-        //     return myJson.json();
-        // }).then((myJson) => {
-        //     // console.log(myJson);
-        //     setTyrs(myJson);
-        // })
     },[])
 
     const deleteItems = (id) => {
         axios.delete(`https://67b5c3a107ba6e59083e5dc0.mockapi.io/cart/${id}`)
-        setOverlayItem((objDelete)=> objDelete.filter(item=>item.id !== id))
+        setOverlayItems((objDelete)=> objDelete.filter(item=>item.id !== id))
     }
 
     const isAdded = (myId) => {
@@ -64,7 +59,7 @@ function App() {
 
 
     return (
-      <AppContext.Provider value={{tyrs, setTyrs, overlayItems, setOverlayItem, favorites, setFavorites, isAdded, isFav}}>
+      <AppContext.Provider value={{tyrs, setTyrs, overlayItems, setOverlayItems, favorites, setFavorites, isAdded, isFav}}>
         <div>
             <Router>
                   <Header/>
@@ -74,14 +69,14 @@ function App() {
                                 setFavorites={setFavorites}
                                 item={tyrs}
                                 overlayItems={overlayItems}
-                                setOverlayItem={setOverlayItem}
+                                setOverlayItems={setOverlayItems}
                             />}>
                             </Route>
 
                             <Route path="/" element={<Home
                                 item={tyrs}
                                 overlayItems={overlayItems}
-                                setOverlayItem={setOverlayItem}
+                                setOverlayItems={setOverlayItems}
                                 favorites={favorites}
                                 setFavorites={setFavorites}
                             />}>

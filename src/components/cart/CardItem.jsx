@@ -6,18 +6,18 @@ const CardItem = (props) => {
 
     const onAddOverlay = async (obj) =>{
         try{
-            const findOverlay = props.overlayItems.find(objOver=>objOver.myId === obj.myId)
+            const findOverlay = props.overlayItems.find(objOver => objOver.myId === obj.myId)
             if(findOverlay){
-                await axios.delete(`https://637f91ca2f8f56e28e904e7d.mockapi.io/cart/${findOverlay.id}`)
+                await axios.delete(`https://67b5c3a107ba6e59083e5dc0.mockapi.io/cart/${findOverlay.id}`)
                 props.setOverlayItems((over) => over.filter(o => o.myId !== obj.myId ))
             }
             else{
-                const {data} = await axios.post('https://637f91ca2f8f56e28e904e7d.mockapi.io/cart', obj)
+                const {data} = await axios.post('https://67b5c3a107ba6e59083e5dc0.mockapi.io/cart', obj)
                 props.setOverlayItems([...props.overlayItems, data])
             }
-        }
-        catch{
+        } catch{
             alert('Произошла ошибка')
+
         }
     }
 
@@ -25,11 +25,11 @@ const CardItem = (props) => {
         try{
             const findFavorites = props.favorites.find(objFav=>objFav.myId === obj.myId)
             if(findFavorites){
-                await axios.delete(`https://637f91ca2f8f56e28e904e7d.mockapi.io/favorites/${findFavorites.id}`)
+                await axios.delete(`https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites/${findFavorites.id}`)
                 props.setFavorites((fav) => fav.filter(o => o.myId !== obj.myId ))
             }
             else{
-                const {data} = await axios.post('https://637f91ca2f8f56e28e904e7d.mockapi.io/favorites', obj)
+                const {data} = await axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites', obj)
                 props.setFavorites([...props.favorites, data])
             }
         }

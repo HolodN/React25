@@ -44,7 +44,7 @@ const Item = (props) => {
                         <div className='card-header py-2 px-3'>
 
                             {
-                                context.isFav(props.myId) === true ?
+                                context.isFav(props.myId) == true ?
                             <button type='button' className='w-100 btn btn-lg btn-primary' onClick={onClickFav}>
                                 Добавлен в избранное
                             </button>
@@ -63,7 +63,7 @@ const Item = (props) => {
                             <p>{props.price}</p>
                             <button type='button' className='w-100 btn btn-lg btn-primary' onClick={onClickAdd}>
                                 {context.isAdded(props.myId) ?
-                                <img width={15}
+                                <img width={13}
                                      src={context.isAdded(props.myId) ? '/img/icon.png' : ''}
                                      alt=""/> : 'Добавить в корзину'}
                             </button>
