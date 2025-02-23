@@ -59,47 +59,47 @@ function App() {
 
 
     return (
-      <AppContext.Provider value={{tyrs, setTyrs, overlayItems, setOverlayItems, favorites, setFavorites, isAdded, isFav}}>
-        <div>
-            <Router>
-                  <Header/>
+        <AppContext.Provider value={{tyrs, setTyrs, overlayItems, setOverlayItems, favorites, setFavorites, isAdded, isFav}}>
+            <div>
+                <Router>
+                    <Header/>
                     <Routes>
-                            <Route path="/favorites" element={<Favorites
-                                favorites={favorites}
-                                setFavorites={setFavorites}
-                                item={tyrs}
-                                overlayItems={overlayItems}
-                                setOverlayItems={setOverlayItems}
-                            />}>
-                            </Route>
+                        <Route path="/favorites" element={<Favorites
+                            favorites={favorites}
+                            setFavorites={setFavorites}
+                            item={tyrs}
+                            overlayItems={overlayItems}
+                            setOverlayItems={setOverlayItems}
+                        />}>
+                        </Route>
 
-                            <Route path="/" element={<Home
-                                item={tyrs}
-                                overlayItems={overlayItems}
-                                setOverlayItems={setOverlayItems}
-                                favorites={favorites}
-                                setFavorites={setFavorites}
-                            />}>
-                            </Route>
+                        <Route path="/" element={<Home
+                            item={tyrs}
+                            overlayItems={overlayItems}
+                            setOverlayItems={setOverlayItems}
+                            favorites={favorites}
+                            setFavorites={setFavorites}
+                        />}>
+                        </Route>
 
-                            <Route path="/cart" element={<Basket
-                                totalPrice={
-                                    overlayItems.reduce((element = overlayItems.length, obj) => element + obj.price, 0)
-                                }
-                                overlayProp={overlayItems}
-                                deleteItems={deleteItems}
-                            />}>
-                            </Route>
-                            <Route path="/description" element={<Description
-                            />}>
-                            </Route>
-                            <Route path="/form" element={<Form />}></Route>
+                        <Route path="/cart" element={<Basket
+                            totalPrice={
+                                overlayItems.reduce((element = overlayItems.length, obj) => element + obj.price, 0)
+                            }
+                            overlayProp={overlayItems}
+                            deleteItems={deleteItems}
+                        />}>
+                        </Route>
+                        <Route path="/description" element={<Description
+                        />}>
+                        </Route>
+                        <Route path="/form" element={<Form />}></Route>
                     </Routes>
-                  <Footer/>
-            </Router>
-        </div>
-      </AppContext.Provider>
-  );
+                    <Footer/>
+                </Router>
+            </div>
+        </AppContext.Provider>
+    );
 }
 
 export default App;

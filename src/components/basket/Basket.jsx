@@ -21,10 +21,10 @@ const Basket = (props) => {
                                             deleteItems={props.deleteItems}
                                         />
                                     )
-                            })
+                                })
                             }
                         </div>
-                    : <h1 className='col-md-8 offset-md-2'>Корзина пуста</h1>
+                        : <h1 className='col-md-8 offset-md-2'>Корзина пуста</h1>
                 }
                 <div className='row'>
                     <div className='col-md-8 offset-md-2'>
