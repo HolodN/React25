@@ -83,11 +83,16 @@ function App() {
                             </Route>
 
                             <Route path="/cart" element={<Basket
-                                overlayItems={overlayItems}
+                                totalPrice={
+                                    overlayItems.reduce((element = overlayItems.length, obj) => element + obj.price, 0)
+                                }
+                                overlayProp={overlayItems}
                                 deleteItems={deleteItems}
                             />}>
                             </Route>
-                            <Route path="/description" element={<Description />}></Route>
+                            <Route path="/description" element={<Description
+                            />}>
+                            </Route>
                             <Route path="/form" element={<Form />}></Route>
                     </Routes>
                   <Footer/>
