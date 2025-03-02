@@ -2,6 +2,7 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
 import 'leaflet/dist/leaflet.css';
+import axios from 'axios';
 import {CircleMarker, MapContainer, Marker, Polygon, Popup, TileLayer, Tooltip} from 'react-leaflet'
 
 const center = [47.282081, 39.702356]
@@ -24,7 +25,11 @@ const Form = () => {
     } = useForm()
 
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        axios.post('https://67b5c3a107ba6e59083e5dc0.mockapi.io/form', data)
+        alert('Заявка отправлена')
+        console.log(data)
+    }
 
 
     console.log(watch("example")) // watch input value by passing the name of it
